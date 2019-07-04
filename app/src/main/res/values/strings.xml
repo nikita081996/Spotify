@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Spotify</string>
+        <string name="nikitaverma">yourscheme</string>
+        <string name="callback">yourhost</string>
+</resources>
