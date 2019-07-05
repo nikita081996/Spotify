@@ -4,17 +4,21 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v4.app.NotificationCompat;
-import android.widget.Toast;
 
-import java.util.Random;
-
-import nikitaverma.example.com.spotify.common.App;
+import nikitaverma.example.com.spotify.common.Constants;
+import nikitaverma.example.com.spotify.common.listener.CallBrowseApiListener;
 import nikitaverma.example.com.spotify.helpers.NotificationManager;
 
 public class MyBroadcastReceiver extends BroadcastReceiver {
     private NotificationManager mNotificationManagerUtils;
     private NotificationCompat.Builder nb;
     private int mId = 101;
+    private CallBrowseApiListener mCallBrowseApiListener;
+
+    public MyBroadcastReceiver(){}
+    public MyBroadcastReceiver(CallBrowseApiListener callBrowseApiListener){
+        mCallBrowseApiListener = callBrowseApiListener;
+    }
 
     @Override
     public void onReceive(Context context, Intent intent) {
@@ -30,23 +34,28 @@ public class MyBroadcastReceiver extends BroadcastReceiver {
         String artistName = "";
         String albumName = "";
         String trackName = "";
-        if (action.equals(BroadcastTypes.METADATA_CHANGED)) {
+        if (action.equals(Constants.BROADCAST_ACTION_METADATACHANGED)) {
             trackId = intent.getStringExtra("id");
             artistName = intent.getStringExtra("artist");
             albumName = intent.getStringExtra("album");
             trackName = intent.getStringExtra("track");
-            Toast.makeText(App.getContext(),"Broadcast", Toast.LENGTH_LONG).show();
-            sendNotification(trackName, artistName, albumName);
+          //  Toast.makeText(context, "Broadcast", Toast.LENGTH_LONG).show();
+          //  sendNotification(trackName, artistName, albumName);
             int trackLengthInSec = intent.getIntExtra("length", 0);
             // Do something with extracted information...
-        } else if (action.equals(BroadcastTypes.PLAYBACK_STATE_CHANGED)) {
+        }
+        else if (action.equals(Constants.BROADCAST_ACTION_PLAYBACKSTATECHANGED)) {
             boolean playing = intent.getBooleanExtra("playing", false);
             int positionInMs = intent.getIntExtra("playbackPosition", 0);
             // Do something with extracted information
-        } else if (action.equals(BroadcastTypes.QUEUE_CHANGED)) {
+        }
+        else if (action.equals(Constants.BROADCAST_ACTION_QUEUECHANGED)) {
             // Sent only as a notification, your app may want to respond accordingly.
         }
-     //
+        else if(action.equals(Constants.BROADCAST_ACTION_BROWSE)){
+            mCallBrowseApiListener.callBrowseApi(intent.getStringExtra(Constants.API_NAME));
+        }
+        //
     }
 
     private void sendNotification(String title, String body, String url) {
@@ -58,13 +67,6 @@ public class MyBroadcastReceiver extends BroadcastReceiver {
 
         }
 
-    }
-
-    static final class BroadcastTypes {
-        static final String SPOTIFY_PACKAGE = "com.spotify.music";
-        static final String PLAYBACK_STATE_CHANGED = SPOTIFY_PACKAGE + ".playbackstatechanged";
-        static final String QUEUE_CHANGED = SPOTIFY_PACKAGE + ".queuechanged";
-        static final String METADATA_CHANGED = SPOTIFY_PACKAGE + ".metadatachanged";
     }
 
 }

@@ -1,5 +1,7 @@
 package nikitaverma.example.com.spotify.model.search_api.playlist;
 
+import nikitaverma.example.com.spotify.model.search_api.Items;
+
 public class Playlists
 {
     private String next;
@@ -14,7 +16,7 @@ public class Playlists
 
     private String href;
 
-    private String[] items;
+    private Items[] items;
 
     public String getNext ()
 {
@@ -76,12 +78,12 @@ public class Playlists
         this.href = href;
     }
 
-    public String[] getItems ()
+    public Items[] getItems ()
     {
         return items;
     }
 
-    public void setItems (String[] items)
+    public void setItems (Items[] items)
     {
         this.items = items;
     }

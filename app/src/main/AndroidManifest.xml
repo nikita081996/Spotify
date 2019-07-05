@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="nikitaverma.example.com.spotify">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
 
     <application
@@ -14,40 +14,35 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-    <activity android:name=".MainActivity"
-        android:launchMode="singleInstance">
-
-    <intent-filter>
+        <activity
+            android:name=".MainActivity"
+            android:launchMode="singleInstance">
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-         <intent-filter>
-                <action android:name="android.intent.action.VIEW"/>
-
-                <category android:name="android.intent.category.DEFAULT"/>
-                <category android:name="android.intent.category.BROWSABLE"/>
-
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
                 <data
                     android:host="callback"
-                    android:scheme="nikitaverma"/>
+                    android:scheme="nikitaverma" />
             </intent-filter>
         </activity>
+
         <activity
-            android:exported="true"
             android:name="com.spotify.sdk.android.authentication.AuthCallbackActivity"
+            android:exported="true"
             android:theme="@android:style/Theme.Translucent.NoTitleBar">
-
             <intent-filter>
-                <action android:name="android.intent.action.VIEW"/>
-                <category android:name="android.intent.category.DEFAULT"/>
-                <category android:name="android.intent.category.BROWSABLE"/>
-
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
                 <data
-                    android:scheme="@string/com_spotify_sdk_redirect_scheme"
-                    android:host="@string/com_spotify_sdk_redirect_host"/>
+                    android:host="@string/com_spotify_sdk_redirect_host"
+                    android:scheme="@string/com_spotify_sdk_redirect_scheme" />
             </intent-filter>
-
         </activity>
 
         <activity
@@ -59,15 +54,15 @@
             android:name="MyBroadcastReceiver"
             android:enabled="true"
             android:exported="true">
-
             <intent-filter>
-                <action android:name="com.spotify.music.playbackstatechanged"/>
-                <action android:name="com.spotify.music.metadatachanged"/>
-                <action android:name="com.spotify.music.queuechanged"/>
-                <action android:name="com.spotify.music.active"/>
+                <action android:name="com.spotify.music.playbackstatechanged" />
+                <action android:name="com.spotify.music.metadatachanged" />
+                <action android:name="com.spotify.music.queuechanged" />
+                <action android:name="com.spotify.music.active" />
+                <action android:name="com.browse.api" />
             </intent-filter>
-
         </receiver>
+
     </application>
 
 </manifest>

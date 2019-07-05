@@ -1,10 +1,29 @@
 package nikitaverma.example.com.spotify.model.search_api;
 
+import nikitaverma.example.com.spotify.model.search_api.album.Albums;
 import nikitaverma.example.com.spotify.model.search_api.artists.Artists;
+import nikitaverma.example.com.spotify.model.search_api.playlist.Playlists;
+import nikitaverma.example.com.spotify.model.search_api.tracks.Tracks;
 
-public class Search {
+public class Search
+{
+    private Albums albums;
 
     private Artists artists;
+
+    private Playlists playlists;
+
+    private Tracks tracks;
+
+    public Albums getAlbums ()
+    {
+        return albums;
+    }
+
+    public void setAlbums (Albums albums)
+    {
+        this.albums = albums;
+    }
 
     public Artists getArtists ()
     {
@@ -16,9 +35,29 @@ public class Search {
         this.artists = artists;
     }
 
+    public Playlists getPlaylists ()
+    {
+        return playlists;
+    }
+
+    public void setPlaylists (Playlists playlists)
+    {
+        this.playlists = playlists;
+    }
+
+    public Tracks getTracks ()
+    {
+        return tracks;
+    }
+
+    public void setTracks (Tracks tracks)
+    {
+        this.tracks = tracks;
+    }
+
     @Override
     public String toString()
     {
-        return "ClassPojo [artists = "+artists+"]";
+        return "ClassPojo [albums = "+albums+", artists = "+artists+", playlists = "+playlists+", tracks = "+tracks+"]";
     }
 }

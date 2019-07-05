@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">Spotify</string>
-        <string name="nikitaverma">yourscheme</string>
-        <string name="callback">yourhost</string>
+    <string name="nikitaverma">yourscheme</string>
+    <string name="callback">yourhost</string>
+    <string name="progress_bar_hode_log_error">==cannot hide progress bar===</string>
+
 </resources>
+

@@ -1,10 +1,11 @@
 package nikitaverma.example.com.spotify.model.search_api.album;
 
+import nikitaverma.example.com.spotify.model.search_api.Items;
 import nikitaverma.example.com.spotify.model.search_api.artists.Artists;
 import nikitaverma.example.com.spotify.model.search_api.External_urls;
 import nikitaverma.example.com.spotify.model.search_api.Images;
 
-public class Album {
+public class Albums {
     private Images[] images;
 
     private String[] available_markets;
@@ -30,6 +31,8 @@ public class Album {
     private String id;
 
     private External_urls external_urls;
+
+    private Items[] items;
 
     public Images[] getImages ()
     {
@@ -159,6 +162,14 @@ public class Album {
     public void setExternal_urls (External_urls external_urls)
     {
         this.external_urls = external_urls;
+    }
+
+    public Items[] getItems() {
+        return items;
+    }
+
+    public void setItems(Items[] items) {
+        this.items = items;
     }
 
     @Override
